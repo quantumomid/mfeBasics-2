@@ -1,10 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import App from "./App";
 
 // Mount function for starting up the app
 const mount = (el) => {
     ReactDOM.render(
-        <h1>Salaam this is the Marketing microfrontend sub app!</h1>,
+        <App />,
         el
     );
 }

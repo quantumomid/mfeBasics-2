@@ -6,3 +6,7 @@ The Container app is the overall holder/connector of the different microfrontend
 - Auth (React)
 - Dashboard (Vue)
 - Marketing (React) 
+
+## Marketing 
+
+This sub-app runs on React and uses Material UI.
