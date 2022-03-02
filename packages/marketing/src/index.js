@@ -1,1 +1,1 @@
-console.log("I am Marketing sub-app");
+import("./bootstrap");
