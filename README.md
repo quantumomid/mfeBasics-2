@@ -10,3 +10,7 @@ The Container app is the overall holder/connector of the different microfrontend
 ## Marketing 
 
 This sub-app runs on React and uses Material UI.
+
+## CI/CD Pipeline
+
+A CI/CD pipeline is configured utilising Github actions.
