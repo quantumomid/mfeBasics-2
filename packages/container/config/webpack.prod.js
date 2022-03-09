@@ -15,7 +15,7 @@ const prodConfig = {
         new ModuleFederationPlugin({
             name: "container",
             remotes: {
-                marketing: `marketing@${domain}/marketing/remoteEntry.js`, // Will be set once AWS is configured
+                marketing: `marketing@${domain}/marketing/latest/remoteEntry.js`, // Will be set once AWS is configured
             },
             shared: packageJson.dependencies,
         })
