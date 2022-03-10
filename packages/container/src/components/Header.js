@@ -79,7 +79,7 @@ export default function Header({ signedIn, onSignOut }) {
             component={RouterLink}
             to="/"
           >
-            App
+           ☁ Al-Cloud 
           </Typography>
           <Button
             color="primary"
