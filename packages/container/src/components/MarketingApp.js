@@ -7,7 +7,7 @@ const MarketingApp = () => {
     const history = useHistory(); // Effectively a copy of the browser history
 
     useEffect(() => {
-        mount(ref.current, {
+        const { onParentNavigate } = mount(ref.current, {
             onNavigate: ({pathname: nextPathname}) => {
                 // console.log("pathname", nextPathname);
 
@@ -18,6 +18,8 @@ const MarketingApp = () => {
                 }
             }
         });
+
+        history.listen(onParentNavigate);
     }, []);
 
     return <div ref={ref} />;

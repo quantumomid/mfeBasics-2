@@ -1,11 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { createMemoryHistory } from "history";
+import { createMemoryHistory, createBrowserHistory } from "history";
 import App from "./App";
 
 // Mount function for starting up the app
-const mount = (el, { onNavigate }) => {
-    const history = createMemoryHistory();
+const mount = (el, { onNavigate, defaultHistory }) => {
+    const history = defaultHistory || createMemoryHistory();
 
     if(onNavigate) {
         history.listen(onNavigate);
@@ -16,7 +16,17 @@ const mount = (el, { onNavigate }) => {
         el
     );
 
-
+    return {
+        // Call this whenever the parent, i.e. Container, does any navigation
+        onParentNavigate({ pathname: nextPathname }) {
+            // console.log("Container just navigated");
+            const { pathname } = history.location; 
+                
+            if (pathname !== nextPathname) {
+                history.push(nextPathname);
+            }
+        }
+    }
 }
 
 // If we are in Development AND in Isolation - call mount() immediately
@@ -24,7 +34,7 @@ if(process.env.NODE_ENV === "development") {
     const devRoot = document.querySelector("#_marketing-dev-root");
 
     if(devRoot){
-        mount(devRoot, {});
+        mount(devRoot, { defaultHistory: createBrowserHistory() });
     }
 }
 
