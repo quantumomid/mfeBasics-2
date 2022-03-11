@@ -1,6 +1,8 @@
 import React from "react";
 import { Switch, Route, Router } from "react-router-dom";
 import { StylesProvider, createGenerateClassName } from "@material-ui/core/styles";
+import SignIn from "./components/Signin";
+import SignUp from "./components/Signup";
 
 // To resolve the class name class caused between Landing component (Marketing) and Header component (Container) 
 const generateClassName = createGenerateClassName({
@@ -13,6 +15,8 @@ export default function App ({ history }) {
             <StylesProvider generateClassName={generateClassName}>
                 <Router history={history} >
                     <Switch>
+                        <Route path="/auth/signin" component={SignIn} />
+                        <Route path="/auth/signup" component={SignUp} />
                     </Switch>
                 </Router>
             </StylesProvider>
