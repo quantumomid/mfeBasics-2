@@ -1,9 +1,10 @@
-import React from "react";
-import MarketingApp from "./components/MarketingApp";
+import React, { lazy, Suspense } from "react";
 import Header from "./components/Header";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { StylesProvider, createGenerateClassName } from "@material-ui/core/styles";
-import AuthApp from "./components/AuthApp";
+
+const MarketingLazy = lazy(() => import("./components/MarketingApp"));
+const AuthLazy = lazy(() => import("./components/AuthApp"));
 
 // console.log(mount);
 
@@ -16,10 +17,12 @@ const App = () => {
         <BrowserRouter>
             <StylesProvider generateClassName={generateClassName}>
                 <Header />
-                <Switch>
-                    <Route path="/auth" component={AuthApp} />
-                    <Route path="/" component={MarketingApp} />
-                </Switch>
+                <Suspense fallback={<div>Loading....</div>}>
+                    <Switch>
+                        <Route path="/auth" component={AuthLazy} />
+                        <Route path="/" component={MarketingLazy} />
+                    </Switch>
+                </Suspense>
             </StylesProvider>
         </BrowserRouter>
     )
